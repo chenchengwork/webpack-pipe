@@ -34,6 +34,7 @@ const babelAntd = require("./pipe/babelAntd");
 const miniCssExtractPlugin = require("./pipe/miniCssExtractPlugin");
 const provideReactPlugin = require("./pipe/provideReactPlugin");
 const autoDllReactPlugin = require("./pipe/autoDllReactPlugin");
+const webpackbarPlugin = require("./pipe/webpackbarPlugin");
 
 module.exports = {
     assemble,               // 组装配置
@@ -54,5 +55,6 @@ module.exports = {
         miniCssExtractPlugin,
         provideReactPlugin,
         autoDllReactPlugin,
+        webpackbarPlugin
     }
 };
