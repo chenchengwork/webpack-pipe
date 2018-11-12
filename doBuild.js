@@ -1,8 +1,6 @@
 /**
  * 打包编译
  */
-process.env.NODE_ENV = 'production';
-process.env.BABEL_ENV = 'production';
 
 /**
  * 全局配置
@@ -167,6 +165,9 @@ const toEnd = (startTime) => {
 };
 
 module.exports = (webpackConf, option = {}) => {
+    process.env.NODE_ENV = 'production';
+    process.env.BABEL_ENV = 'production';
+
     G = Tool.deepmerge(G, option);
 
     (async () => {

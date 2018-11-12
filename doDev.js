@@ -1,12 +1,12 @@
 /**
  * Created by chencheng on 16-11-17.
  */
-process.env.NODE_ENV = 'development';
-process.env.BABEL_ENV = 'development';
-
 const { webpack, webpackDevServer, merge, tool } = require("./lib/depend");
 
 module.exports = (options) => {
+    process.env.NODE_ENV = 'development';
+    process.env.BABEL_ENV = 'development';
+
 	let { webpackConfig, devServerConfig, host, port } = options;
 
 	host = host || "localhost";
@@ -50,9 +50,9 @@ module.exports = (options) => {
 	// 启动服务
     const server = new webpackDevServer(webpack(webpackConfig), devServerConfig);
 
-	// 将其他路由，全部返回index.html
     server.app.get('*', (req, res) => {
         // res.set("Access-Control-Allow-Origin", "*")
+        // console.log(req.path)
         res.sendFile(`${devServerConfig.contentBase}/index.html`);
     });
 

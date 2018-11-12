@@ -12,10 +12,11 @@ module.exports = (config) => {
             new AutoDllPlugin({
                 inject: false,
                 filename: '[name].dll.js',
+                debug: true,
                 entry: {
                     vendor: [
                         'react',
-                        'react-dom'
+                        'react-dom',
                     ]
                 }
             })

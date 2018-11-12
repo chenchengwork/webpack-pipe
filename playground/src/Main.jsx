@@ -3,12 +3,14 @@
  */
 import ErrorBoundary from 'components/ErrorBoundary';
 
+import Hello from './pages/Hello';
+
 /**
  * 渲染程序
  */
 export default () => (
     <ErrorBoundary>
-        <h2>test webpack pipe</h2>
+        <Hello id={1}/>
     </ErrorBoundary>
 );
 

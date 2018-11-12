@@ -32,17 +32,6 @@ module.exports = (config) => {
                             '@babel/preset-react',           // 转换jsx语法
                         ],
                         plugins: [
-                            // require("@babel/plugin-proposal-function-bind"),        // 支持::obj.func 等价与obj.func.bind(obj) 参照:https://babeljs.io/docs/en/next/babel-plugin-proposal-function-bind
-                            // require("@babel/plugin-syntax-dynamic-import"),         // 支持动态import
-                            // [require("@babel/plugin-proposal-decorators"), { "legacy": true }],         // 支持装饰器语法
-                            // [require("@babel/plugin-proposal-class-properties"), { "loose": true }],    // 支持class属性初始化和static
-                            // require("@babel/plugin-proposal-object-rest-spread"),       // 支持...rest
-                            // require("@babel/plugin-proposal-export-default-from"),      // 支持 export v from 'mod'语法
-                            // require("@babel/plugin-proposal-export-namespace-from"),    // 支持 export * as ns from 'mod'
-                            // require("@babel/plugin-syntax-import-meta"),
-                            // require("@babel/plugin-proposal-json-strings"),
-
-
                             "@babel/plugin-proposal-function-bind",                         // 支持::obj.func 等价与obj.func.bind(obj) 参照:https://babeljs.io/docs/en/next/babel-plugin-proposal-function-bind
                             "@babel/plugin-syntax-dynamic-import",                          // 支持动态import
                             ["@babel/plugin-proposal-decorators", { "legacy": true }],      // 支持装饰器语法

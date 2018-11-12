@@ -7,11 +7,13 @@ const { doDev, pipe } = require("../../index");
 doDev({
 	webpackConfig: mkWebpackConfig([pipe.development]),
     devServerConfig: {
-	    // contentBase: paths.webContentPath
+	    // contentBase: ""
     },
 	host: "localhost",
 	port: 8081
 });
+
+
 
 
 
