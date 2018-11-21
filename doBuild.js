@@ -107,10 +107,9 @@ const formatWebpackConf = (webpackConf) => {
 const createIndexHtml = (webpackConf) => new Promise((resolve, reject) => {
     const indexTplStr = require('./lib/indexTpl');
 
-    const indexContent = indexTplStr.replace('{$publicVendorCSS}', webpackConf.output.publicPath + 'vendor.css')
+    const indexContent = indexTplStr.replace('{$publicAppCSS}', webpackConf.output.publicPath + 'app.css')
         .replace('{$EnvConfJS}', G.proxyPath + 'config/ENV.js')
-        .replace('{$runtime}', webpackConf.output.publicPath + 'runtime.js')
-        .replace('{$publicVendorJS}', webpackConf.output.publicPath + 'vendor.js')
+        .replace('{$publicVendorJS}', webpackConf.output.publicPath + 'vendor.dll.js')
         .replace('{$publicAppJS}', webpackConf.output.publicPath + 'app.js');
 
     fs.open(path.resolve(G.buildPath, 'index.html'), 'w', (err, fd) => {
