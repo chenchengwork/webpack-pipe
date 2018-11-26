@@ -6,24 +6,11 @@ const { merge, formatStyleLoader } = require("../lib/depend");
  * @return {*}
  */
 module.exports = (config) => {
-    /*
-       依赖说明：
-           antd, less(less)
-           npm install antd --save
-           npm install less@2.7.2 less-loader babel-plugin-import --save-dev
-    */
-
     /**
      * 自定义antd的样式
      * @type {{"@primary-color": string, "@font-size-base": string, "@body-background": string, "@layout-body-background": string}}
      */
-    const customAntdStyle = {
-        '@primary-color': '#108ee9',		            // 更改antd的主题颜色;
-        // "@icon-url":"'/antd_font/iconfont'",            // 更改字体地址; 注意:必须再加额外的“'”,将icon字体部署到本地
-        '@font-size-base': '12px',                      // 修改基础字体大小
-        '@body-background': '#fff',                     // 修改body的背景颜色
-        '@layout-body-background': '#fff',              // 修改layout布局的body背景颜色
-    };
+    const customAntdStyle = {};
 
     config.module.rules.push({
         test: /\.less/,
@@ -40,7 +27,7 @@ module.exports = (config) => {
         if (rule.loader === "babel-loader"){
             // `style: true` for less
             // babel-plugin-import
-            rule.options.plugins.push(['import', {libraryName: 'antd', 'libraryDirectory': 'es', style: true}]);
+            rule.options.plugins.push(['import', {libraryName: 'antd-mobile', 'libraryDirectory': 'es', style: true}]);
 
             return rule;
         }
@@ -50,3 +37,4 @@ module.exports = (config) => {
 
     return config;
 };
+

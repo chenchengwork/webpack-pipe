@@ -1,5 +1,4 @@
-const { merge } = require("../lib/depend");
-const formatStyleLoader = require("../lib/formatStyleLoader");
+const { merge, formatStyleLoader } = require("../lib/depend");
 
 /**
  * css节点

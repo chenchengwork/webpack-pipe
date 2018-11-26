@@ -12,7 +12,7 @@ module.exports = (config) => {
             new AutoDllPlugin({
                 inject: false,
                 filename: '[name].dll.js',
-                debug: true,
+                debug: process.env.NODE_ENV === "production" ? false :true,
                 entry: {
                     vendor: [
                         'react',

@@ -51,8 +51,6 @@ module.exports = (options) => {
     const server = new webpackDevServer(webpack(webpackConfig), devServerConfig);
 
     server.app.get('*', (req, res) => {
-        // res.set("Access-Control-Allow-Origin", "*")
-        // console.log(req.path)
         res.sendFile(`${devServerConfig.contentBase}/index.html`);
     });
 
