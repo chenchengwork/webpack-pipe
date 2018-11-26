@@ -29,6 +29,7 @@ const css = require("./pipe/css");
 const scss = require("./pipe/scss");
 const babelReact = require("./pipe/babelReact");
 const babelAntd = require("./pipe/babelAntd");
+const babelAntdMobile = require("./pipe/babelAntdMobile");
 
 // plugins
 const miniCssExtractPlugin = require("./pipe/miniCssExtractPlugin");
@@ -51,6 +52,7 @@ module.exports = {
         scss,
         babelReact,
         babelAntd,
+        babelAntdMobile,
 
         miniCssExtractPlugin,
         provideReactPlugin,
