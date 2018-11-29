@@ -12,8 +12,7 @@ module.exports = (config) => {
         plugins: [
             new WebpackBar({
                 name: 'Webpack',
-                minimal: false,
-                profile: true
+                reporters: ['fancy', 'profile', 'stats'],
             })
         ]
     }, config || {})
