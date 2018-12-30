@@ -15,6 +15,12 @@ module.exports = (config) => {
                     exclude: /(node_modules|bower_modules)/,
                     test: /\.jsx?$/,
                     options: {
+                        "env": {
+                            // 生产环境下去掉prop-types
+                            "production": {
+                                "plugins": ["transform-react-remove-prop-types"]
+                            }
+                        },
                         presets: [
                             ['@babel/preset-env', {
                                 loose: true,
