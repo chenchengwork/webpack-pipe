@@ -15,6 +15,7 @@ module.exports = (config) => {
                     exclude: /(node_modules|bower_modules)/,
                     test: /\.jsx?$/,
                     options: {
+                        cacheDirectory: true,
                         "env": {
                             // 生产环境下去掉prop-types
                             "production": {

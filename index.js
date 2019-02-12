@@ -12,9 +12,30 @@ const assemble = (nodes) => {
     if(!Array.isArray(nodes)){
         throw new Error("传入参数必须是数组");
     }
-
     return compose(...nodes)();
 };
+
+// /**
+//  * 重写管道节点配置
+//  * @param pipeNodeFn
+//  * @param rewriteConf
+//  * @param rewriteMethod 值包括： "deepMerge" | "shallowMerge" | "replace"
+//  * @return {function(*=): *}
+//  */
+// const rewriteNode = (pipeNodeFn, rewriteConf, rewriteMethod = "deepMerge") => {
+//     rewriteConf = typeof rewriteConf === "undefined" ? {} : rewriteConf;
+//
+//     switch (rewriteMethod) {
+//         case "deepMerge":
+//             return (config) => depend.merge(depend.merge(pipeNodeFn(), rewriteConf), config);
+//         case "shallowMerge":
+//             return (config) => depend.merge(Object.assign(pipeNodeFn(), rewriteConf), config);
+//         case "replace":
+//             return (config) => depend.merge(rewriteConf, config);
+//         default:
+//             throw new Error(`rewriteMethod -> ${rewriteMethod} no found`)
+//     }
+// };
 
 /*
     管道节点
@@ -39,6 +60,7 @@ const webpackbarPlugin = require("./pipe/webpackbarPlugin");
 
 module.exports = {
     assemble,               // 组装配置
+    // rewriteNode,            // 重写管道节点配置
     depend,                 // 对外暴露依赖
     doDev,                  // 执行dev server
     doBuild,                // 执行打包
