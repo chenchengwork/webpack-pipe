@@ -25,7 +25,7 @@ module.exports = (config) => {
                         presets: [
                             ['@babel/preset-env', {
                                 loose: true,
-                                corejs: "3.0.1",
+                                corejs: ">3",
                                 targets: {
                                     // 根据browserslist来分析支持情况， 具体的配置参照： https://github.com/ai/browserslist
                                     browsers: [
