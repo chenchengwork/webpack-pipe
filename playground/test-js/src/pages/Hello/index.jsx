@@ -41,7 +41,7 @@ export default class Hello extends PureComponent{
         return(
             <div>
                 <h2>Test Webpack Pipe</h2>
-
+                <img src={require("./img/logo.svg")} style={{width: 100, height: 100}} />
                 <Table dataSource={dataSource} columns={columns} />
             </div>
         )
