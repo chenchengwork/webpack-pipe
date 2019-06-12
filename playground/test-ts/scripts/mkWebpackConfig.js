@@ -1,9 +1,16 @@
-const { assemble, pipe, depend } = require("../../index");
+const { assemble, pipe, depend } = require("../../../index");
+const path = require("path")
 
 // 入口配置
 const entry = (config) => depend.merge({
     entry:{
         app: ["./src"],
+    },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js', ".jsx" ],
+        alias: {
+            "@": path.resolve(__dirname, '../src/'),
+        }
     }
 }, config);
 
@@ -39,7 +46,7 @@ module.exports = (pipeNodes = []) => {
         pipe.css,
         pipe.scss,
         pipe.babelAntd,
-        pipe.babelReact,
+        pipe.babelTsReact,
 
         pipe.miniCssExtractPlugin,
         pipe.provideReactPlugin,

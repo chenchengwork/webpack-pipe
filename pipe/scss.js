@@ -15,7 +15,7 @@ module.exports = (config) => {
                     use: formatStyleLoader({
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: process.env.NODE_ENV === "production" ? false :true
                         }
                     })
                 }

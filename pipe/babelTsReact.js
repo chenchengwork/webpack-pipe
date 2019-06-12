@@ -1,7 +1,7 @@
 const { merge } = require("../lib/depend");
 
 /**
- * babel react节点
+ * babel ts react节点
  * @param config
  * @return {*}
  */
@@ -13,7 +13,7 @@ module.exports = (config) => {
                 {
                     loader: 'babel-loader',
                     exclude: /(node_modules|bower_modules)/,
-                    test: /\.jsx?$/,
+                    test: /\.tsx?$/,
                     options: {
                         cacheDirectory: true,
                         "env": {
@@ -25,7 +25,7 @@ module.exports = (config) => {
                         presets: [
                             ['@babel/preset-env', {
                                 loose: true,
-                                corejs: ">3",
+                                corejs: "3.0.1",
                                 targets: {
                                     // 根据browserslist来分析支持情况， 具体的配置参照： https://github.com/ai/browserslist
                                     browsers: [
@@ -39,7 +39,13 @@ module.exports = (config) => {
                                 debug: false
                             }],
                             '@babel/preset-react',           // 转换jsx语法
-                        ],
+                            ['@babel/preset-typescript', {
+                                isTSX: true,
+                                jsxPragma: "react",
+                                allExtensions: true
+                            }],    // 转换ts语法
+                        ]
+                        ,
                         plugins: [
                             "@babel/plugin-proposal-function-bind",                         // 支持::obj.func 等价与obj.func.bind(obj) 参照:https://babeljs.io/docs/en/next/babel-plugin-proposal-function-bind
                             "@babel/plugin-syntax-dynamic-import",                          // 支持动态import

@@ -4,7 +4,7 @@
 process.env.NODE_ENV = 'development';
 process.env.BABEL_ENV = 'development';
 const mkWebpackConfig = require("./mkWebpackConfig");
-const { doDev, pipe } = require("../../index");
+const { doDev, pipe } = require("../../../index");
 
 doDev({
 	webpackConfig: mkWebpackConfig([pipe.development]),
