@@ -15,7 +15,7 @@ module.exports = (config) => {
                     exclude: /(node_modules|bower_modules)/,
                     test: /\.tsx?$/,
                     options: {
-                        cacheDirectory: false,
+                        cacheDirectory: true,
                         "env": {
                             // 生产环境下去掉prop-types
                             "production": {
