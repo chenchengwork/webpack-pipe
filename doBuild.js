@@ -46,21 +46,6 @@ const handleWarn = (warnMsg) => {
 const formatWebpackConf = (webpackConf) => {
     webpackConf.output.publicPath = Tool.rtrimSlash(G.proxyPath) + '/' + G.publicName + '/';
     webpackConf.output.path = Tool.rtrimSlash(G.buildPath) + '/' + G.publicName;
-
-    // 解决antd font本地化问题
-    // webpackConf.module.rules.forEach((item) => {
-    //     if(item.use && Array.isArray(item.use)){
-    //         item.use.forEach((item2) => {
-    //             if(item2.loader == "less-loader"){
-    //                 const old_icon_url = item2.options.modifyVars ? item2.options.modifyVars["@icon-url"] : null;
-    //                 if(old_icon_url){
-    //                     item2.options.modifyVars["@icon-url"] = Tool.rtrimSlash(G.proxyPath) + old_icon_url
-    //                 }
-    //             }
-    //         })
-    //     }
-    // });
-
     return webpackConf;
 };
 
@@ -128,9 +113,21 @@ const toEnd = (startTime) => {
 `);
 };
 
+const buildStart = () => new Promise((resolve, reject) => {
+    resolve(true);
+});
+
+const buildFinished = () => new Promise((resolve, reject) => {
+    resolve(true);
+});
+
 module.exports = (webpackConf, option = {}) => {
     process.env.NODE_ENV = 'production';
     process.env.BABEL_ENV = 'production';
+
+    option.buildStart = option.buildStart || buildStart;
+    option.buildFinished = option.buildFinished || buildFinished;
+    option.isCreateIndexHtml = option.isCreateIndexHtml === undefined ? true : option.isCreateIndexHtml;
 
     G = Tool.deepmerge(G, option);
 
@@ -140,16 +137,26 @@ module.exports = (webpackConf, option = {}) => {
 
         const productionConf = formatWebpackConf(webpackConf);
 
-        // 1. 创建发布目录
+        // 1. 回调编译开始
+        const startResp = option.buildStart(productionConf)
+        if (Tool.isError(startResp)) handleError("编译开始回调失败");
+
+        // 2. 创建发布目录
         if (!await Tool.access(G.buildPath)) fs.mkdirSync(G.buildPath);
 
-        // 2. 执行编译
+        // 3. 执行编译
         const compilerResp = await doCompiler(productionConf);
         if (Tool.isError(compilerResp)) handleError(compilerResp.message);
 
-        // 3. 创建index.html
-        const createResp = await createIndexHtml(productionConf);
-        if (Tool.isError(createResp)) handleError(createResp.message);
+        // 4. 创建index.html
+        if(option.isCreateIndexHtml) {
+            const createResp = await createIndexHtml(productionConf);
+            if (Tool.isError(createResp)) handleError(createResp.message);
+        }
+
+        // 5. 回调编译完成
+        const finishedResp = await option.buildFinished(productionConf);
+        if (Tool.isError(finishedResp)) handleError("编译结束回调失败");
 
         toEnd(startTime)
     })();

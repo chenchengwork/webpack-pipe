@@ -2,6 +2,7 @@ const compose = require("./lib/compose");
 const depend = require("./lib/depend");
 const doDev = require("./doDev");
 const doBuild = require("./doBuild");
+const tool = require('./lib/tool');
 
 /**
  * 组装节点配置
@@ -65,6 +66,7 @@ module.exports = {
     depend,                 // 对外暴露依赖
     doDev,                  // 执行dev server
     doBuild,                // 执行打包
+    tool,                   // 工具包
     pipe: {                 // 管道节点
         base,
         development,
