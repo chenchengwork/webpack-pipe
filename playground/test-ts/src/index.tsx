@@ -1,10 +1,10 @@
 /**
  * @description 项目入口文件
  */
-import * as React from 'react';
-import * as ReactDOM  from 'react-dom';
+import React, { Fragment } from 'react';
+import ReactDOM  from 'react-dom';
 
-import { Button } from 'antd'
+import { Button, Drawer } from 'antd'
 import {getA} from './a'
 
 import lazyScreen from '@/utils/test';
@@ -21,8 +21,12 @@ interface IState {
 class Main extends React.Component{
 
     render(){
-        console.log(getA())
-        return <Button>"111"</Button>
+        return (
+            <Fragment>
+                {/*<Drawer />*/}
+                <Button>"111"</Button>
+            </Fragment>
+        )
     }
 }
 
