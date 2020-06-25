@@ -29,9 +29,16 @@ module.exports = (config) => {
         test: /\.less/,
         use: formatStyleLoader({
             loader: 'less-loader',
+            // options: {
+            //     sourceMap: process.env.NODE_ENV === "production" ? false :true,
+            //     modifyVars: customAntdStyle
+            // }
             options: {
-                sourceMap: process.env.NODE_ENV === "production" ? false :true,
-                modifyVars: customAntdStyle
+                lessOptions: {
+                    modifyVars: customAntdStyle,
+                    javascriptEnabled: true,
+                },
+                sourceMap: process.env.NODE_ENV === "production" ? false : true,
             }
         })
     });

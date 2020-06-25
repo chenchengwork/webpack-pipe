@@ -1,7 +1,7 @@
 /**
  * @description 项目入口文件
  */
-import ErrorBoundary from 'components/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary';
 
 import Hello from './pages/Hello';
 
@@ -10,7 +10,7 @@ import Hello from './pages/Hello';
  */
 export default () => (
     <ErrorBoundary>
-        <Hello id={1}/>
+        <Hello />
     </ErrorBoundary>
 );
 

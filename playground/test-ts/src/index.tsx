@@ -3,12 +3,9 @@
  */
 import React, { Fragment } from 'react';
 import ReactDOM  from 'react-dom';
-
+import Main from './Main';
 import { Button, Drawer } from 'antd'
-import {getA} from './a'
 
-import lazyScreen from '@/utils/test';
-// const Main = lazyScreen(import("./Main"));
 interface IProps {
     color: string,
     size?: string,
@@ -18,17 +15,17 @@ interface IState {
     count: number,
 }
 
-class Main extends React.Component{
-
-    render(){
-        return (
-            <Fragment>
-                {/*<Drawer />*/}
-                <Button>"111"</Button>
-            </Fragment>
-        )
-    }
-}
+// class Main extends React.Component{
+//
+//     render(){
+//         return (
+//             <Fragment>
+//                 {/*<Drawer />*/}
+//                 <Button>"111"</Button>
+//             </Fragment>
+//         )
+//     }
+// }
 
 
 /**

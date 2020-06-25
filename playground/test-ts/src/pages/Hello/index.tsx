@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'antd';
+import { Table, Drawer, Switch } from 'antd';
 
 export default class Hello extends PureComponent{
     // TODO 不起作用的原因是, 使用autodll-webpack-plugin插件后,它会加载 *.production.js的文件,这样就不能检查propTypes了
@@ -41,7 +41,8 @@ export default class Hello extends PureComponent{
         return(
             <div>
                 <h2>Test Webpack Pipe</h2>
-
+                <Drawer />
+                <Switch defaultChecked />
                 <Table dataSource={dataSource} columns={columns} />
             </div>
         )
