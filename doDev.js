@@ -7,7 +7,7 @@ module.exports = (options) => {
     process.env.NODE_ENV = 'development';
     process.env.BABEL_ENV = 'development';
 
-	let { webpackConfig, devServerConfig, host, port, isInlineHotLoad = true } = options;
+	let { webpackConfig, devServerConfig, host, port, isInlineHotLoad = false } = options;
 
 	host = host || "0.0.0.0";
 	port = port || 8080;
