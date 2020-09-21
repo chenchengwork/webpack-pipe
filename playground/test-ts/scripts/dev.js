@@ -4,15 +4,21 @@
 process.env.NODE_ENV = 'development';
 process.env.BABEL_ENV = 'development';
 const mkWebpackConfig = require("./mkWebpackConfig");
-const { doDev, pipe } = require("../../../index");
+const { doDev, pipe, pipeExtra } = require("../../../index");
+
+const host = "localhost";
+const port = "8081";
 
 doDev({
-	webpackConfig: mkWebpackConfig([pipe.development]),
-    devServerConfig: {
-	    // contentBase: ""
-    },
-	host: "localhost",
-	port: 8081
+	isInlineHotLoad: false,
+	webpackConfig: pipeExtra.qiankun(
+		mkWebpackConfig([pipe.development]),
+		require("../package.json").name,
+		`//${host}:${port}/public/`
+	),
+    devServerConfig: {},
+	host,
+	port
 });
 
 

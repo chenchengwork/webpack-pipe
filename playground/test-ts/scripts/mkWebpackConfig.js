@@ -1,4 +1,4 @@
-const { assemble, pipe, depend } = require("../../../index");
+const { assemble, pipe, pipeExtra,  depend } = require("../../../index");
 const path = require("path")
 
 // 入口配置
@@ -41,6 +41,7 @@ const resolve = (config) => depend.merge({
 module.exports = (pipeNodes = []) => {
     const config = assemble([
         ...pipeNodes,
+        pipeExtra.styledJsx,
         pipe.base,
         pipe.staticResource,
         pipe.css,

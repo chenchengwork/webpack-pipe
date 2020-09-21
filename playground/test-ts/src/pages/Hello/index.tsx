@@ -36,14 +36,24 @@ export default class Hello extends PureComponent{
             key: 'address',
         }];
 
-
-
         return(
             <div>
-                <h2>Test Webpack Pipe</h2>
+                <h2>Test Webpack Pipe11</h2>
+                <img src={require("./img/logo512.png").default} style={{width: 100, height: 100}}/>
                 <Drawer />
                 <Switch defaultChecked />
                 <Table dataSource={dataSource} columns={columns} />
+
+                <div className="test">
+                    测试styled-jsx
+                    {/*language=SCSS*/}
+                    <style jsx>{`
+                      .test{
+                        width: 100%;
+                        background-color: #056D8B;
+                      }
+                    `}</style>
+                </div>
             </div>
         )
     }

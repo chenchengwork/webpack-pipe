@@ -75,6 +75,7 @@ module.exports = {
         staticResource,
         css,
         scss,
+
         babelReact,
         babelAntd,
         babelTsReact,
@@ -84,5 +85,9 @@ module.exports = {
         provideReactPlugin,
         autoDllReactPlugin,
         webpackbarPlugin
+    },
+    pipeExtra: {
+        styledJsx: require("./pipeExtra/styledJsx"),
+        qiankun: require("./pipeExtra/qiankun"),
     }
 };

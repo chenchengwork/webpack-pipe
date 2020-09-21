@@ -7,15 +7,25 @@ module.exports = (options) => {
     process.env.NODE_ENV = 'development';
     process.env.BABEL_ENV = 'development';
 
-	let { webpackConfig, devServerConfig, host, port } = options;
+	let { webpackConfig, devServerConfig, host, port, isInlineHotLoad = true } = options;
 
-	host = host || "localhost";
+	host = host || "0.0.0.0";
 	port = port || 8080;
 
 	// webpack 自动重新加载，采用inline
-    Object.keys(webpackConfig.entry).forEach(key => {
-        webpackConfig.entry[key].push('webpack-dev-server/client?http://' + host + ':' + port + '/')
-    });
+    if(isInlineHotLoad) {
+        const hotLoadUrl = 'webpack-dev-server/client?http://' + host + ':' + port + '/';
+
+        if (typeof webpackConfig.entry == "string") {
+            webpackConfig.entry = [webpackConfig.entry, hotLoadUrl]
+        } else if (Array.isArray(webpackConfig.entry)) {
+            webpackConfig.entry.push(hotLoadUrl)
+        } else {
+            Object.keys(webpackConfig.entry).forEach(key => {
+                webpackConfig.entry[key].push(hotLoadUrl)
+            });
+        }
+    }
 
     devServerConfig = merge({
         publicPath: "/public/",
@@ -42,6 +52,10 @@ module.exports = (options) => {
 
         stats: {
             colors: true,
+        },
+
+        headers: {
+            'Access-Control-Allow-Origin': '*',
         },
 
         proxy: {}

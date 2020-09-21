@@ -1,5 +1,5 @@
 {
-  "name": "playground",
+  "name": "test-ts",
   "version": "1.0.0",
   "description": "test webpack-pipe",
   "main": "src/index",
@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@types/react": "^16.9.41",
-    "@types/react-dom": "^16.9.8"
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-jsx": "^2.2.8",
+    "styled-jsx": "^3.2.5",
+    "styled-jsx-plugin-sass": "^1.0.0"
   },
   "devDependencies": {
     "typescript": "^3.5.1"
