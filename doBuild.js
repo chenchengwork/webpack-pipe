@@ -82,9 +82,12 @@ const createIndexHtml = (webpackConf) => new Promise((resolve, reject) => {
  */
 const doCompiler = (productionConf) => new Promise((resolve, reject) => {
     webpack(productionConf, (err, stats) => {
-        let jsonStats = stats.toJson();
-        if (jsonStats.errors.length > 0) reject(new Error(jsonStats.errors));
-        if (jsonStats.warnings.length > 0) handleWarn(jsonStats.warnings);
+
+        if(!stats) {
+            let jsonStats = stats.toJson();
+            if (jsonStats.errors.length > 0) reject(new Error(jsonStats.errors));
+            if (jsonStats.warnings.length > 0) handleWarn(jsonStats.warnings);
+        }
 
         return resolve(true);
     })

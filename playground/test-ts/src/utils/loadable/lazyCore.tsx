@@ -4,24 +4,23 @@
 
 import React from "react";
 const DefaultSpin = () => <div>loading...</div>
+import Exception from './Exception';
 
 class ErrorBoundary extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = { hasError: false };
-    }
+    state = { hasError: false }
 
-    static getDerivedStateFromError(error) {
+    static getDerivedStateFromError(error: Error | null) {
         return { hasError: true };
     }
 
-    componentDidCatch(error, info) {
+    componentDidCatch(error: Error | null, info: object) {
         console.error(error);
     }
 
     render() {
         if (this.state.hasError) {
-            return <div>对不起,页面加载失败</div>;
+            return <Exception type="loadPageError"/>
+            return <h3>对不起,页面加载失败,请联系管理员!</h3>;
         }
 
         return this.props.children;
@@ -32,10 +31,10 @@ class ErrorBoundary extends React.PureComponent {
  * 默认loading参数
  * @type {*[]}
  */
-const defaultLoading = [DefaultSpin, {}];
+const defaultLoading: [React.FC, object] = [DefaultSpin, {}];
 
 
-export default (AsyncCom, loading = defaultLoading) => {
+export default (AsyncCom: Promise<{default: React.ComponentType<any>}>, loading = defaultLoading) => {
     const Com = React.lazy(() => AsyncCom);
 
     if(!Array.isArray(loading)){
@@ -49,7 +48,7 @@ export default (AsyncCom, loading = defaultLoading) => {
     const Loading = loading[0];
     const loadingProps = loading[1] || {};
 
-    return (props) => (
+    return (props: any) => (
         <ErrorBoundary>
             <React.Suspense fallback={<Loading {...loadingProps}/>}>
                 <Com {...props} />

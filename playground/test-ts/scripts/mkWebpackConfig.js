@@ -7,7 +7,7 @@ const entry = (config) => depend.merge({
         app: ["./src"],
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js', ".jsx" ],
+        extensions: [ '.tsx', '.ts', '.mjs' ],
         alias: {
             "@": path.resolve(__dirname, '../src/'),
         }
@@ -26,9 +26,7 @@ const output = (config) => depend.merge({
 const resolve = (config) => depend.merge({
     resolve: {
         "modules": [
-            // "node_modules",
             "web_modules",
-            "src"
         ]
     }
 }, config);
@@ -57,6 +55,5 @@ module.exports = (pipeNodes = []) => {
         output,
         entry,
     ]);
-
     return config;
 };

@@ -10,12 +10,20 @@ module.exports = (config) => {
     return merge({
         module: {
             rules: [
+                // 参照https://webpack.docschina.org/configuration/module/#resolve-fully-specified
+                {
+                    test: /\.m?js/,
+                    resolve: {
+                        fullySpecified: false // disable the behaviour
+                    }
+                },
                 {
                     loader: 'babel-loader',
                     exclude: /(node_modules|bower_modules)/,
                     test: /\.tsx?$/,
                     options: {
                         cacheDirectory: true,
+                        sourceType: 'unambiguous', // 这个一定要配，自动处理es和js模块
                         "env": {
                             // 生产环境下去掉prop-types
                             "production": {
@@ -35,7 +43,6 @@ module.exports = (config) => {
                                 },
                                 modules: false,              // modules预先将es6模块转成"amd" | "umd" | "systemjs" | "commonjs", 值为false则不转换
                                 useBuiltIns: "usage",        // 按需动态加载polyfills
-                                // debug: process.env.NODE_ENV === "production" ? false :true,
                                 debug: false
                             }],
                             '@babel/preset-react',           // 转换jsx语法

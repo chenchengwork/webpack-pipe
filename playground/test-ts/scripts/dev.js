@@ -4,9 +4,9 @@
 process.env.NODE_ENV = 'development';
 process.env.BABEL_ENV = 'development';
 const mkWebpackConfig = require("./mkWebpackConfig");
-const { doDev, pipe, pipeExtra } = require("../../../index");
+const { doDev, pipe, pipeExtra,depend } = require("../../../index");
 
-const host = "localhost";
+const host = "0.0.0.0";
 const port = "8081";
 
 doDev({
@@ -14,7 +14,7 @@ doDev({
 	webpackConfig: pipeExtra.qiankun(
 		mkWebpackConfig([pipe.development]),
 		require("../package.json").name,
-		`//${host}:${port}/public/`
+		`//${depend.tool.getLocalIP()}:${port}/public/`
 	),
     devServerConfig: {},
 	host,

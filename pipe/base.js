@@ -19,10 +19,11 @@ module.exports = (config) => {
             // alias: {}
         },
 
-        node: {
-            net: "empty",
-            fs: "empty",
-        },
+        // TODO webpack 5 移除的配置会永远设置成 false
+        // node: {
+        //     net: "empty",
+        //     fs: "empty",
+        // },
 
         output: {
             // 公网发布的目录

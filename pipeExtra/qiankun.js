@@ -9,7 +9,9 @@ module.exports = (config, name, publicPath = null) => {
 
     config.output.library = name;
     config.output.libraryTarget = 'umd';
-    config.output.jsonpFunction = `webpackJsonp_${name}`;
+    // TODO 升级到webpack5时将jsonpFunction重命名为chunkLoadingGlobal
+    // config.output.jsonpFunction = `webpackJsonp_${name}`;
+    config.output.chunkLoadingGlobal = `webpackJsonp_${name}`;
     config.output.globalObject ="window";
 
     return config;

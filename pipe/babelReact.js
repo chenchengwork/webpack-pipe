@@ -10,6 +10,13 @@ module.exports = (config) => {
     return merge({
         module: {
             rules: [
+                // 参照https://webpack.docschina.org/configuration/module/#resolve-fully-specified
+                {
+                    test: /\.m?js/,
+                    resolve: {
+                        fullySpecified: false // disable the behaviour
+                    }
+                },
                 {
                     loader: 'babel-loader',
                     exclude: /(node_modules|bower_modules)/,
