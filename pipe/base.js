@@ -12,8 +12,6 @@ module.exports = (config) => {
 
         entry: {},
 
-        target: ['web', 'es5'],
-
         // 指定模块目录名称
         resolve: {
             extensions: ['.js', '.jsx'],
