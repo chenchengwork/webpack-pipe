@@ -51,6 +51,7 @@ export default class Hello extends PureComponent{
                       .test{
                         width: 100%;
                         background-color: #056D8B;
+                        display: flex;
                       }
                     `}</style>
                 </div>
