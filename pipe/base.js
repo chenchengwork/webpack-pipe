@@ -3,14 +3,16 @@ const { merge } = require("../lib/depend");
 module.exports = (config) => {
     return merge({
         // 用于生成源代码的mapping
-        optimization: {
-            // 代码分割策略配置
-            splitChunks: {
-                cacheGroups: {}
-            },
-        },
+        // optimization: {
+        //     // 代码分割策略配置
+        //     splitChunks: {
+        //         cacheGroups: {}
+        //     },
+        // },
 
         entry: {},
+
+        target: ['web', 'es5'],
 
         // 指定模块目录名称
         resolve: {

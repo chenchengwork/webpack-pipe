@@ -57,7 +57,6 @@ const babelTsReact = require("./pipe/babelTsReact");
 // plugins
 const miniCssExtractPlugin = require("./pipe/miniCssExtractPlugin");
 const provideReactPlugin = require("./pipe/provideReactPlugin");
-const autoDllReactPlugin = require("./pipe/autoDllReactPlugin");
 const webpackbarPlugin = require("./pipe/webpackbarPlugin");
 
 module.exports = {
@@ -83,7 +82,6 @@ module.exports = {
 
         miniCssExtractPlugin,
         provideReactPlugin,
-        autoDllReactPlugin,
         webpackbarPlugin
     },
     pipeExtra: {

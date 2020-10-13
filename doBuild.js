@@ -59,7 +59,6 @@ const createIndexHtml = (webpackConf) => new Promise((resolve, reject) => {
 
     const indexContent = indexTplStr.replace('{$publicAppCSS}', webpackConf.output.publicPath + 'app.css')
         .replace('{$EnvConfJS}', G.proxyPath + 'config/ENV.js')
-        .replace('{$publicVendorJS}', webpackConf.output.publicPath + 'vendor.dll.js')
         .replace('{$publicAppJS}', webpackConf.output.publicPath + 'app.js');
 
     fs.open(path.resolve(G.buildPath, 'index.html'), 'w', (err, fd) => {
@@ -82,8 +81,10 @@ const createIndexHtml = (webpackConf) => new Promise((resolve, reject) => {
  */
 const doCompiler = (productionConf) => new Promise((resolve, reject) => {
     webpack(productionConf, (err, stats) => {
-
-        if(!stats) {
+        if(err){
+            return reject(err);
+        }
+        if(stats) {
             let jsonStats = stats.toJson();
             if (jsonStats.errors.length > 0) reject(new Error(jsonStats.errors));
             if (jsonStats.warnings.length > 0) handleWarn(jsonStats.warnings);
