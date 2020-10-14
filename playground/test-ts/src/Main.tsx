@@ -4,6 +4,7 @@
 import React from "react";
 import ErrorBoundary from './components/ErrorBoundary';
 import loadable from '@/utils/loadable';
+import { IntlWrapper } from '@/lang';
 
 const Hello = loadable(import("./pages/Hello"));
 
@@ -11,9 +12,11 @@ const Hello = loadable(import("./pages/Hello"));
  * 渲染程序
  */
 export default () => (
-    <ErrorBoundary>
-        <Hello />
-    </ErrorBoundary>
+    <IntlWrapper>
+        <ErrorBoundary>
+            <Hello />
+        </ErrorBoundary>
+    </IntlWrapper>
 );
 
 
