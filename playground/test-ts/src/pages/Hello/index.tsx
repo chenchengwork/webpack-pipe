@@ -1,15 +1,23 @@
 import React, {useState} from 'react';
-import { Table, Drawer, Switch, Spin, Button, Card } from 'antd';
+import { Table, Drawer, Switch, Spin, Button, Card, Row } from 'antd';
+import {
+    // PlusOutlined,
+    // EditOutlined,
+    // DeleteOutlined,
+    CopyOutlined
+} from '@ant-design/icons';
 import {FormattedMessage} from 'react-intl';
 import LoadJsx from "./LoadJsx";
 import LoadStaticResource from "./LoadStaticResource";
+import Test from './Test';
 
 const Hello: React.FC = () => {
     const [ loading, setLoading ] = useState(true);
-
+    const color = "red";
     return(
         <div>
             <h2>测试Webpack Pipe</h2>
+            <Row>1111111111111</Row>
             <Card>
                 <LoadStaticResource />
             </Card>
@@ -30,11 +38,15 @@ const Hello: React.FC = () => {
                 <div>中国</div>
             </div>
             <div>
-                <Button onClick={() => setLoading(!loading)}>{loading ? "关闭loading" : "开启loading"}</Button>
+                <Button
+                    icon={<CopyOutlined />}
+                    onClick={() => setLoading(!loading)}>{loading ? "关闭loading" : "开启loading"}</Button>
                 { loading && <Spin />}
             </div>
 
             <Table dataSource={dataSource} columns={columns} />
+
+            <Test />
 
             <div className="test">
                 测试styled-jsx
@@ -42,7 +54,7 @@ const Hello: React.FC = () => {
                 <style jsx>{`
                   .test{
                     width: 100%;
-                    background-color: red;
+                    background-color: ${color};
                     display: flex;
                   }
                 `}</style>
