@@ -54,7 +54,7 @@ exports.antSolution = {
     },
     build: ({buildOptions, webpackConfParams = {}, formatWebpackConf}) => {
         webpackConfParams.isProdMode = true;
-        let buildPath = depend.tool.resolveAppPath("build");
+        let buildPath = depend.tool.resolveAppPath("dist");
         if(buildOptions){
             buildPath = buildOptions.buildPath || buildPath;
         }

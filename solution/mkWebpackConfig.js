@@ -63,8 +63,8 @@ const intl =  (config) => {
             // 使用的babel插件是: babel-plugin-react-intl
             // rule.options.cacheDirectory = false; // 保证提取的信息是最新的
             // rule.options.plugins.push(['react-intl', {"messagesDir": "./i18n-messages"}]);
-            console.log('**************************************************************8')
             rule.options.plugins.push(['react-intl', {
+                "extractSourceLocation": true,
                 "idInterpolationPattern": "[sha512:contenthash:base64:6]",
                 "extractFromFormatMessageCall": true,
                 "ast": true,

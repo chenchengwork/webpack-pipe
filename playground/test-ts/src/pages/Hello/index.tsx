@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Drawer, Switch } from 'antd';
 import {FormattedMessage} from 'react-intl';
 import A from "./A";
+import a from "./img/logo512.png";
 
 const Hello: React.FC = () => {
     const dataSource = [{
