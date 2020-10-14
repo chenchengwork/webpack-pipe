@@ -63,13 +63,63 @@ const intl =  (config) => {
             // 使用的babel插件是: babel-plugin-react-intl
             // rule.options.cacheDirectory = false; // 保证提取的信息是最新的
             // rule.options.plugins.push(['react-intl', {"messagesDir": "./i18n-messages"}]);
-            rule.options.plugins.push(['react-intl', {
-                "extractSourceLocation": true,
-                "idInterpolationPattern": "[sha512:contenthash:base64:6]",
-                "extractFromFormatMessageCall": true,
-                "ast": true,
-                pragma: "@intl-meta"
-            }]);
+
+            // rule.options.plugins.push(['react-intl', {
+            //     "extractSourceLocation": true,
+            //     "idInterpolationPattern": "[sha512:contenthash:base64:6]",
+            //     "extractFromFormatMessageCall": true,
+            //     "ast": true,
+            //     pragma: "@intl-meta"
+            // }]);
+
+
+            rule.options.plugins.push([
+                "react-intl-auto",
+                {
+                    // 移除的前缀：true - ID 中将不包含任何文件路径前缀
+                    removePrefix: "src.",
+                    // 使用文件名生成 ID
+                    filebase: false,
+                    // 使用前导注释作为消息说明
+                    // 仅适用于使用 defineMessages 定义语音包的时候
+                    extractComments: true,
+                    // https://github.com/akameco/babel-plugin-react-intl-auto#usekey
+                    useKey: true,
+                    // ID 中单词之间的分隔符
+                    separator: ".",
+                    // 是否使用自定义模块作为定义Messages等的源
+                    // https://github.com/akameco/babel-plugin-react-intl-auto/issues/74#issuecomment-528562743
+                    // moduleSourceName: "react-intl"
+                }
+            ]);
+
+            rule.options.plugins.push([
+                "react-intl",
+                {
+                    messagesDir: "./src/locales"
+                }
+            ]);
+
+            rule.options.plugins.push([
+                "react-intl-extractor",
+                {
+                    // 文件需要提前创建好，确保内容为正确的 json 格式，例如：[]
+                    // 提取后聚合文件，包含了消息的 id、defaultMessage、description
+                    extractedFile: "./locales/default.json",
+                    langFiles: [
+                        {
+                            // 文件需要提前创建好，确保内容为正确的 json 格式，例如：{}
+                            path: "./locales/zh.json",
+                            cleanUpNewMessages: false
+                        },
+                        {
+                            // 文件需要提前创建好，确保内容为正确的 json 格式，例如：{}
+                            path: "./locales/en.json",
+                            cleanUpNewMessages: true
+                        }
+                    ]
+                }
+            ])
 
             return rule;
         }
@@ -107,7 +157,6 @@ module.exports = ({
     pipeNodes = [],
     isProdMode = false,
     isStartSkszBit = true,
-    isTsx = true,
     isIntl = false,
     antTheme = {},
     qiankun,
@@ -123,7 +172,7 @@ module.exports = ({
         pipe.css,
         pipe.scss,
         pipe.babelAntd,
-        isTsx ? pipe.babelTsReact : pipe.babelReact,
+        pipe.babelTsReact,
 
         pipe.miniCssExtractPlugin,
         pipe.provideReactPlugin,

@@ -28,6 +28,8 @@ module.exports = (options) => {
     }
 
     devServerConfig = merge({
+        // http2: true,
+        // hotOnly: true,
         publicPath: "/public/",
 
         // 指定服务器内容指定目录

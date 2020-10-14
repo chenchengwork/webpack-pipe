@@ -2,7 +2,6 @@ import React from 'react';
 import { Table, Drawer, Switch } from 'antd';
 import {FormattedMessage} from 'react-intl';
 import A from "./A";
-import a from "./img/logo512.png";
 
 const Hello: React.FC = () => {
     const dataSource = [{
@@ -40,11 +39,11 @@ const Hello: React.FC = () => {
             <div>
                 <p>国际化</p>
                 {/*<FormattedMessage defaultMessage="foo" id="bar" />*/}
-                {/*<FormattedMessage*/}
-                {/*    id="myMessage"*/}
-                {/*    defaultMessage="Today is {ts, date, ::yyyyMMdd}"*/}
-                {/*    values={{ts: Date.now()}}*/}
-                {/*/>*/}
+                <FormattedMessage
+                    defaultMessage="Today is {ts, date, ::yyyyMMdd}"
+                    values={{ts: Date.now()}}
+                />
+                <FormattedMessage defaultMessage="中国11211" />
             </div>
             <div>
                 <A />

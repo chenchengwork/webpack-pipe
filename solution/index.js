@@ -10,7 +10,6 @@ const defaultWebpackConfParams = {
         name: "",
         publicPath: null
     },
-    isTsx: true,
     isTargetEs5: true,
     isIntl: false,
     antTheme: {}
@@ -35,7 +34,7 @@ const getConfig = (webpackConfParams, formatWebpackConf, port) => {
 }
 
 exports.antSolution = {
-    dev: ({port, host, devServerConfig, webpackConfParams = {}, formatWebpackConf}) => {
+    dev: ({port, host, isInlineHotLoad = true, devServerConfig, webpackConfParams = {}, formatWebpackConf}) => {
         if(!port) return clc.red("请传入端口号(port)...");
         webpackConfParams.isProdMode = false;
 
@@ -49,7 +48,8 @@ exports.antSolution = {
                 },
             }, devServerConfig || {}),
             host: host || "0.0.0.0",
-            port
+            port,
+            isInlineHotLoad: isInlineHotLoad,
         });
     },
     build: ({buildOptions, webpackConfParams = {}, formatWebpackConf}) => {
