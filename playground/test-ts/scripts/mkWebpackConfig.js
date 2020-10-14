@@ -1,59 +1,9 @@
-const { assemble, pipe, pipeExtra,  depend } = require("../../../index");
-const path = require("path")
-
-// 入口配置
-const entry = (config) => depend.merge({
-    entry:{
-        app: ["./src"],
-    },
-    resolve: {
-        extensions: [ '.tsx', '.ts', '.mjs' ],
-        alias: {
-            "@": path.resolve(__dirname, '../src/'),
-        }
-    }
-}, config);
-
-// 输出配置
-const output = (config) => depend.merge({
-    output:{
-        publicPath: "/public/",
-        path: depend.tool.resolveAppPath("public/build"),
-    }
-}, config);
-
-
-const resolve = (config) => depend.merge({
-    resolve: {
-        "modules": [
-            "web_modules",
-        ]
-    }
-}, config);
-
-
 /**
  * 组装webpack config
  * @return {*}
  */
-module.exports = (pipeNodes = []) => {
-    const config = assemble([
-        ...pipeNodes,
-        pipeExtra.styledJsx,
-        pipe.base,
-        pipe.staticResource,
-        pipe.css,
-        pipe.scss,
-        pipe.babelAntd,
-        pipe.babelTsReact,
+module.exports = (config) => {
+    // 在此处修改webpack config;
 
-        pipe.miniCssExtractPlugin,
-        pipe.provideReactPlugin,
-        pipe.webpackbarPlugin,
-
-        resolve,
-        output,
-        entry,
-    ]);
     return config;
 };

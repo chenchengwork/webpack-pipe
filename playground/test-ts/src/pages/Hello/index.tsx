@@ -13,7 +13,6 @@ const Hello: React.FC = () => {
             <Card>
                 <LoadStaticResource />
             </Card>
-            <img src={require("./img/logo512.png").default} style={{width: 100, height: 100}}/>
             <Drawer />
             <Switch defaultChecked />
             <div>
