@@ -72,7 +72,11 @@ const intl =  (config) => {
             //     pragma: "@intl-meta"
             // }]);
 
+            //****************以下配置使用的安装包******************
+            // https://acme.top/react-intl
+            // babel-plugin-react-intl-auto, babel-plugin-react-intl-extractor, @babel/plugin-transform-typescript
 
+            // 自动生成id
             rule.options.plugins.push([
                 "react-intl-auto",
                 {
@@ -93,13 +97,15 @@ const intl =  (config) => {
                 }
             ]);
 
+            // 提取react-intl文件
             rule.options.plugins.push([
                 "react-intl",
                 {
-                    messagesDir: "./src/locales"
+                    messagesDir: "./locales/origin"
                 }
             ]);
 
+            // 提取待翻译的文件
             rule.options.plugins.push([
                 "react-intl-extractor",
                 {

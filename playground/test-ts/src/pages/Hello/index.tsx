@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Drawer, Switch } from 'antd';
 import {FormattedMessage} from 'react-intl';
-import A from "./A";
+import LoadJsx from "./LoadJsx";
 
 const Hello: React.FC = () => {
     const dataSource = [{
@@ -46,7 +46,8 @@ const Hello: React.FC = () => {
                 <FormattedMessage defaultMessage="中国11211" />
             </div>
             <div>
-                <A />
+               <p>加载的js或jsx文件</p>
+                <LoadJsx />
             </div>
             <Table dataSource={dataSource} columns={columns} />
 
