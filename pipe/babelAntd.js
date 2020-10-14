@@ -6,13 +6,6 @@ const { merge, formatStyleLoader } = require("../lib/depend");
  * @return {*}
  */
 module.exports = (config) => {
-    /*
-       依赖说明：
-           antd, less(less)
-           npm install antd --save
-           npm install less@2.7.2 less-loader babel-plugin-import --save-dev
-    */
-
     /**
      * 自定义antd的样式
      * @type {{"@primary-color": string, "@font-size-base": string, "@body-background": string, "@layout-body-background": string}}

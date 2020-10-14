@@ -76,6 +76,10 @@ module.exports = (config) => {
                         },
                     ],
                 },
+                {
+                    test: /\.(md)$/,    // 将markdown转换成文本
+                    use:"raw-loader"
+                }
             ],
         },
     }, config || {})

@@ -1,7 +1,7 @@
 const { merge } = require("../lib/depend");
 
 /**
- * babel ts react节点
+ * babel ts/tsx/js/jsx react节点
  * @param config
  * @return {*}
  */
@@ -10,12 +10,20 @@ module.exports = (config) => {
     return merge({
         module: {
             rules: [
+                // 参照https://webpack.docschina.org/configuration/module/#resolve-fully-specified
+                {
+                    test: /\.m?js/,
+                    resolve: {
+                        fullySpecified: false // disable the behaviour
+                    }
+                },
                 {
                     loader: 'babel-loader',
                     exclude: /(node_modules|bower_modules)/,
-                    test: /\.tsx?$/,
+                    test: /(\.tsx?)|(\.jsx?)$/,
                     options: {
                         cacheDirectory: true,
+                        sourceType: 'unambiguous', // 这个一定要配，自动处理es和js模块
                         "env": {
                             // 生产环境下去掉prop-types
                             "production": {
@@ -28,14 +36,14 @@ module.exports = (config) => {
                                 corejs: ">3",
                                 targets: {
                                     // 根据browserslist来分析支持情况， 具体的配置参照： https://github.com/ai/browserslist
-                                    browsers: [
-                                        "last 2 versions",
-                                        "ie >= 8",
-                                    ],
+                                    // browsers: [
+                                    //     "last 2 versions",
+                                    //     "ie >= 8",
+                                    // ],
+                                    chrome: "80",
                                 },
                                 modules: false,              // modules预先将es6模块转成"amd" | "umd" | "systemjs" | "commonjs", 值为false则不转换
                                 useBuiltIns: "usage",        // 按需动态加载polyfills
-                                // debug: process.env.NODE_ENV === "production" ? false :true,
                                 debug: false
                             }],
                             '@babel/preset-react',           // 转换jsx语法
@@ -43,9 +51,8 @@ module.exports = (config) => {
                                 isTSX: true,
                                 jsxPragma: "react",
                                 allExtensions: true
-                            }],    // 转换ts语法
-                        ]
-                        ,
+                            }]
+                        ],
                         plugins: [
                             "@babel/plugin-proposal-function-bind",                         // 支持::obj.func 等价与obj.func.bind(obj) 参照:https://babeljs.io/docs/en/next/babel-plugin-proposal-function-bind
                             "@babel/plugin-syntax-dynamic-import",                          // 支持动态import

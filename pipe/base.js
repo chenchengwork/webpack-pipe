@@ -3,12 +3,12 @@ const { merge } = require("../lib/depend");
 module.exports = (config) => {
     return merge({
         // 用于生成源代码的mapping
-        optimization: {
-            // 代码分割策略配置
-            splitChunks: {
-                cacheGroups: {}
-            },
-        },
+        // optimization: {
+        //     // 代码分割策略配置
+        //     splitChunks: {
+        //         cacheGroups: {}
+        //     },
+        // },
 
         entry: {},
 
@@ -19,10 +19,11 @@ module.exports = (config) => {
             // alias: {}
         },
 
-        node: {
-            net: "empty",
-            fs: "empty",
-        },
+        // TODO webpack 5 移除的配置会永远设置成 false
+        // node: {
+        //     net: "empty",
+        //     fs: "empty",
+        // },
 
         output: {
             // 公网发布的目录
