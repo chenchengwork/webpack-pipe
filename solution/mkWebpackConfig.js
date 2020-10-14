@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const { assemble, pipe, depend, pipeExtra } = require("../exportMethod");
 
 // 入口配置
@@ -167,7 +168,11 @@ module.exports = ({
     antTheme = {},
     qiankun,
     isTargetEs5 = true,
+    isWebpackHRM = true,
 }) => {
+
+    // 设置全局变量
+    depend.setWebpackPipeGlobal({isWebpackHRM});
 
     let config = assemble([
         ...pipeNodes,
@@ -228,6 +233,11 @@ module.exports = ({
 
             return rule;
         });
+    }
+
+    // 热更新(HRM)
+    if(isWebpackHRM){
+        config.plugins.push(new webpack.HotModuleReplacementPlugin());
     }
 
     return isStartSkszBit ? formatWebpackConfigForBit(config) : config;

@@ -13,6 +13,13 @@ const render = (props: any) => {
     ReactDOM.render(<Main />, getRenderContainer(container));
 }
 
+// 监听webpack热替换(HRM)
+if(module.hot){
+    module.hot.accept("./Main", () => {
+        render({});
+    });
+}
+
 /*
  |------------------------------------------------------------------------------------------------------------
  | qiankun微前端应用架构，需要导出相应的生命周期钩子

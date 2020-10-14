@@ -34,12 +34,13 @@ const getConfig = (webpackConfParams, formatWebpackConf, port) => {
 }
 
 exports.antSolution = {
-    dev: ({port, host, isInlineHotLoad = true, devServerConfig, webpackConfParams = {}, formatWebpackConf}) => {
+    dev: ({port, host, isInlineHotLoad = true, isWebpackHRM = true, devServerConfig, webpackConfParams = {}, formatWebpackConf}) => {
         if(!port) return clc.red("请传入端口号(port)...");
         webpackConfParams.isProdMode = false;
+        webpackConfParams.isWebpackHRM = isWebpackHRM;
 
         doDev({
-            webpackConfig: getConfig(webpackConfParams, formatWebpackConf, port),
+            webpackConfig: getConfig(webpackConfParams, formatWebpackConf, port, isWebpackHRM),
             devServerConfig: Object.assign({
                 open: true,
                 historyApiFallback: {
@@ -49,11 +50,13 @@ exports.antSolution = {
             }, devServerConfig || {}),
             host: host || "0.0.0.0",
             port,
-            isInlineHotLoad: isInlineHotLoad,
+            isInlineHotLoad,
+            isWebpackHRM,
         });
     },
     build: ({buildOptions, webpackConfParams = {}, formatWebpackConf}) => {
         webpackConfParams.isProdMode = true;
+        webpackConfParams.isWebpackHRM = false;
         let buildPath = depend.tool.resolveAppPath("dist");
         if(buildOptions){
             buildPath = buildOptions.buildPath || buildPath;

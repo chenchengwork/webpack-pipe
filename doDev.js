@@ -7,9 +7,9 @@ module.exports = (options) => {
     process.env.NODE_ENV = 'development';
     process.env.BABEL_ENV = 'development';
 
-	let { webpackConfig, devServerConfig, host, port, isInlineHotLoad = false } = options;
+	let { webpackConfig, devServerConfig, host, port, isInlineHotLoad = true, isWebpackHRM = true } = options;
 
-	host = host || "0.0.0.0";
+    host = host || "0.0.0.0";
 	port = port || 8080;
 
 	// webpack 自动重新加载，采用inline
@@ -28,8 +28,6 @@ module.exports = (options) => {
     }
 
     devServerConfig = merge({
-        // http2: true,
-        // hotOnly: true,
         publicPath: "/public/",
 
         // 指定服务器内容指定目录
@@ -44,7 +42,7 @@ module.exports = (options) => {
         },
 
         // 开启服务器的模块热替换(HMR)
-        hot: false,
+        hot: isWebpackHRM,
 
         // 当请求不存在的路由时，直接返回首页
         historyApiFallback: {
