@@ -44,10 +44,22 @@ const handleWarn = (warnMsg) => {
  * @param webpackConf
  */
 const formatWebpackConf = (webpackConf) => {
-    webpackConf.output.publicPath = Tool.rtrimSlash(G.proxyPath) + '/' + G.publicName + '/';
+    // webpackConf.output.publicPath = Tool.rtrimSlash(G.proxyPath) + '/' + G.publicName + '/';
     webpackConf.output.path = Tool.rtrimSlash(G.buildPath) + '/' + G.publicName;
     return webpackConf;
 };
+
+const getStaticPublicPath = (webpackConf) => {
+    if(webpackConf.output.publicPath == "auto"){
+        if(G.proxyPath == "/"){
+            return Tool.trimSlash(G.publicName) + '/';
+        }else{
+            return Tool.trimSlash(G.proxyPath) + '/' + G.publicName + '/';
+        }
+    } else {
+        return webpackConf.output.publicPath;
+    }
+}
 
 /**
  * 获取入口文件内容
@@ -56,10 +68,11 @@ const formatWebpackConf = (webpackConf) => {
  */
 const createIndexHtml = (webpackConf) => new Promise((resolve, reject) => {
     const indexTplStr = require('./lib/indexTpl');
+    const staticPublicPath = getStaticPublicPath(webpackConf);
 
-    const indexContent = indexTplStr.replace('{$publicAppCSS}', webpackConf.output.publicPath + 'app.css')
+    const indexContent = indexTplStr.replace('{$publicAppCSS}', staticPublicPath + 'app.css')
         .replace('{$EnvConfJS}', G.proxyPath + 'config/ENV.js')
-        .replace('{$publicAppJS}', webpackConf.output.publicPath + 'app.js');
+        .replace('{$publicAppJS}', staticPublicPath + 'app.js');
 
     fs.open(path.resolve(G.buildPath, 'index.html'), 'w', (err, fd) => {
         let buf = new Buffer(indexContent);

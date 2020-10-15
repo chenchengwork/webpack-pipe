@@ -27,7 +27,7 @@ const getConfig = (webpackConfParams, formatWebpackConf, port) => {
 
     let webpackConfig = mkWebpackConfig(webpackConfParams)
     if(formatWebpackConf){
-        webpackConfig = formatWebpackConf(webpackConfig);
+        webpackConfig = formatWebpackConf(webpackConfig, isProdMode);
     }
 
     return webpackConfig;

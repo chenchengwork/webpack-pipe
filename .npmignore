@@ -10,3 +10,4 @@ run/
 .DS_Store
 playground/
 test.js
+publish.sh

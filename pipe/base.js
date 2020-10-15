@@ -27,7 +27,7 @@ module.exports = (config) => {
 
         output: {
             // 公网发布的目录
-            publicPath: null,
+            publicPath: "auto",
             // 编译的目录
             path: null,
             filename: '[name].js',

@@ -1,4 +1,3 @@
-const path = require("path");
 const webpack = require("webpack");
 const { assemble, pipe, depend, pipeExtra } = require("../exportMethod");
 
@@ -14,7 +13,8 @@ const entry = (config) => depend.merge({
 // 输出配置
 const output = (config) => depend.merge({
     output:{
-        publicPath: "/public/",
+        // publicPath: "/public/",
+        publicPath: "auto",
         path: depend.tool.resolveAppPath("public/build"),
     }
 }, config);
@@ -23,13 +23,10 @@ const output = (config) => depend.merge({
 const resolve = (config) => depend.merge({
     resolve: {
         alias: {
-            // "@": path.resolve(__dirname, '../src/'),
             "@": depend.tool.resolveAppPath('src'),
         },
         extensions: [ '.tsx', '.ts', '.mjs' ],
-        modules: [
-            // path.resolve(__dirname, "../../node_modules")
-        ]
+        modules: []
     }
 }, config);
 
@@ -61,18 +58,6 @@ const themeAntd = (config, antTheme) => {
 const intl =  (config) => {
     config.module.rules = config.module.rules.map(rule => {
         if (rule.loader === "babel-loader"){
-            // 使用的babel插件是: babel-plugin-react-intl
-            // rule.options.cacheDirectory = false; // 保证提取的信息是最新的
-            // rule.options.plugins.push(['react-intl', {"messagesDir": "./i18n-messages"}]);
-
-            // rule.options.plugins.push(['react-intl', {
-            //     "extractSourceLocation": true,
-            //     "idInterpolationPattern": "[sha512:contenthash:base64:6]",
-            //     "extractFromFormatMessageCall": true,
-            //     "ast": true,
-            //     pragma: "@intl-meta"
-            // }]);
-
             //****************以下配置使用的安装包******************
             // https://acme.top/react-intl
             // babel-plugin-react-intl-auto, babel-plugin-react-intl-extractor, @babel/plugin-transform-typescript
