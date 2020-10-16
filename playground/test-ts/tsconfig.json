@@ -12,11 +12,13 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "vendor/*": ["../vendor/*"]
     }
   },
   "include": [
     "./src/**/*",
+    "../vendor/**/*",
     "../node_modules",
     "../../node_modules"
   ]

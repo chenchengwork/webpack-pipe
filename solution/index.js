@@ -5,7 +5,6 @@ const mkWebpackConfig = require("./mkWebpackConfig");
 
 const defaultWebpackConfParams = {
     isProdMode: false,
-    isStartSkszBit: true,
     qiankun: {
         name: "",
         publicPath: null

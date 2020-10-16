@@ -1,6 +1,6 @@
 {
   "name": "webpack-pipe",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "chencheng <daniel_txy@163.com>",
   "description": "webpack pipe",
   "main": "index",

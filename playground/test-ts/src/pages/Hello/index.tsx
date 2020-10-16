@@ -7,6 +7,7 @@ import {
     CopyOutlined
 } from '@ant-design/icons';
 import {FormattedMessage} from 'react-intl';
+import { testVendor } from "vendor/test";
 import LoadJsx from "./LoadJsx";
 import LoadStaticResource from "./LoadStaticResource";
 import Test from './Test';
@@ -14,6 +15,9 @@ import Test from './Test';
 const Hello: React.FC = () => {
     const [ loading, setLoading ] = useState(true);
     const color = "red";
+
+    testVendor("我是vendor包中的testVendor");
+
     return(
         <div>
             <h2>测试Webpack Pipe</h2>

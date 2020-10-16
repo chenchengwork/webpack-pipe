@@ -122,33 +122,12 @@ const intl =  (config) => {
     return config;
 };
 
-const formatWebpackConfigForBit = (config) => {
-    config.module.rules = config.module.rules.map(rule => {
-        // 处理babel loader
-        if (rule.loader === "babel-loader"){
-            rule.include = [
-                depend.tool.resolveAppPath("src"),
-                /node_modules\/@bit\/shikongshuzhi*/
-            ];
-            delete rule.exclude;
-
-            return rule;
-        }
-
-        return rule;
-    });
-
-    return config;
-}
-
 /**
  * 组装webpack config
- * @return {*}
  */
 module.exports = ({
     pipeNodes = [],
     isProdMode = false,
-    isStartSkszBit = true,
     isIntl = false,
     antTheme = {},
     qiankun,
@@ -225,5 +204,5 @@ module.exports = ({
         config.plugins.push(new webpack.HotModuleReplacementPlugin());
     }
 
-    return isStartSkszBit ? formatWebpackConfigForBit(config) : config;
+    return config;
 };
