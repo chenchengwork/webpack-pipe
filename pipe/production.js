@@ -9,9 +9,9 @@ module.exports = (config) => {
                 // 优化js
                 new TerserWebpackPlugin({
                     test: /\.js(\?.*)?$/i,
-                    cache: true,
+                    // cache: true,
+                    // devtool: false,
                     parallel: true,
-                    sourceMap: false,
                     terserOptions:{
                         output: {
                             // 最紧凑的输出
