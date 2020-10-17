@@ -16,10 +16,6 @@ module.exports = {
             // setModuleFederationPlugin,
             () => config
         ]);
-
-
-        console.log(realConfig.resolve.alias);
-
         return realConfig;
     }
 };
