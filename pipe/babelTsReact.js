@@ -46,7 +46,9 @@ module.exports = (config) => {
                                 useBuiltIns: "usage",        // 按需动态加载polyfills
                                 debug: false
                             }],
-                            '@babel/preset-react',           // 转换jsx语法
+                            ['@babel/preset-react', {
+                                "runtime": "automatic",     //
+                            }],           // 转换jsx语法
                             ['@babel/preset-typescript', {
                                 isTSX: true,
                                 jsxPragma: "react",

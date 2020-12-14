@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+// import {FC, useState} from 'react';
 import { Table, Drawer, Switch, Spin, Button, Card, Row } from 'antd';
 import {
     // PlusOutlined,
@@ -93,6 +94,6 @@ const columns = [{
     key: 'age',
 }, {
     title: '住址',
-    dataIndex: 'address',
+    dataIndex: 'ad                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          dress',
     key: 'address',
 }];

@@ -150,7 +150,6 @@ module.exports = ({
         pipe.babelTsReact,
 
         pipe.miniCssExtractPlugin,
-        pipe.provideReactPlugin,
         pipe.webpackbarPlugin,
         resolve,
         output,
