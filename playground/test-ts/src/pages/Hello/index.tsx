@@ -12,6 +12,7 @@ import { testVendor } from "vendor/test";
 import LoadJsx from "./LoadJsx";
 import LoadStaticResource from "./LoadStaticResource";
 import Test from './Test';
+import css from "styled-jsx/css"
 
 const Hello: React.FC = () => {
     const [ loading, setLoading ] = useState(true);
@@ -69,6 +70,17 @@ const Hello: React.FC = () => {
 }
 
 export default Hello;
+
+
+// 全局样式
+const getGlobalStyle = () => {
+    // language=SCSS
+    return css.global`
+        body {
+          height: 100%;
+        }
+    `
+}
 
 
 const dataSource = [
