@@ -13,8 +13,11 @@ import LoadJsx from "./LoadJsx";
 import LoadStaticResource from "./LoadStaticResource";
 import Test from './Test';
 import css from "styled-jsx/css"
+import {RespDataType} from './api'
+
 
 const Hello: React.FC = () => {
+    const a:RespDataType.RoleList = [];
     const [ loading, setLoading ] = useState(true);
     const color = "red";
 
