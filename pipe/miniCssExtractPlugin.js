@@ -10,7 +10,9 @@ module.exports = (config) => {
         plugins: [
             // 提取css
             new MiniCssExtractPlugin({
-                filename: "[name].css"
+                filename: "[name].css",
+                // 忽略css加载顺序
+                ignoreOrder: true,
             }),
         ],
     }, config || {})
