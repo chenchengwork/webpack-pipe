@@ -9,6 +9,7 @@ const defaultWebpackConfParams = {
         name: "",
         publicPath: null
     },
+    antd: "web", // web, mobile, none
     isTargetEs5: true,
     isIntl: false,
     antTheme: {}

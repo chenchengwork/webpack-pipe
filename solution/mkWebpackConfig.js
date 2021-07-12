@@ -131,13 +131,20 @@ module.exports = ({
     isIntl = false,
     antTheme = {},
     qiankun,
+    antd,
     isTargetEs5 = true,
     isWebpackHRM = true,
 }) => {
-
     // 设置全局变量
     depend.setWebpackPipeGlobal({isWebpackHRM});
 
+    // 设置antd
+    let antdPipe = (config) => config;
+    if (antd == "web"){
+        antdPipe =  pipe.babelAntd;
+    }else if(antd == "mobile"){
+        antdPipe =  pipe.babelAntdMobile;
+    }
     let config = assemble([
         ...pipeNodes,
         isProdMode ? pipe.production : pipe.development,
@@ -146,7 +153,7 @@ module.exports = ({
         pipe.staticResource,
         pipe.css,
         pipe.scss,
-        pipe.babelAntd,
+        antdPipe,
         pipe.babelTsReact,
 
         pipe.miniCssExtractPlugin,

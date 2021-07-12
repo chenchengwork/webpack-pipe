@@ -19,6 +19,7 @@ const styledJsx = require("./pipe/styledJsx");
 const babelAntd = require("./pipe/babelAntd");
 const babelAntdMobile = require("./pipe/babelAntdMobile");
 const babelTsReact = require("./pipe/babelTsReact");
+const svgSpriteLoaderFn = require("./pipe/svgSpriteLoader");
 
 // plugins
 const miniCssExtractPlugin = require("./pipe/miniCssExtractPlugin");
@@ -45,6 +46,7 @@ module.exports = {
         css,
         scss,
         styledJsx,
+        svgSpriteLoaderFn,
 
         babelAntd,
         babelTsReact,
