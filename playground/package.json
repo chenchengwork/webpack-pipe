@@ -9,5 +9,7 @@
     "prop-types": "^15.7.2",
     "react-intl": "^5.8.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/styled-jsx": "^2.2.8"
+  }
 }

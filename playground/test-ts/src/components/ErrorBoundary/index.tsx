@@ -23,6 +23,6 @@ export default class ErrorBoundary extends PureComponent {
             return <h1 className={styles["text-center"]}>页面产生错误，请联系管理员!</h1>;
         }
 
-        return this.props.children;
+        return this.props.children || null;
     }
 }

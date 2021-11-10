@@ -14,6 +14,7 @@ import LoadStaticResource from "./LoadStaticResource";
 import Test from './Test';
 import css from "styled-jsx/css"
 import {RespDataType} from './api'
+import "./css/test.css";
 
 
 const Hello: React.FC = () => {
@@ -32,6 +33,7 @@ const Hello: React.FC = () => {
             </Card>
             <Drawer />
             <Switch defaultChecked />
+            <div className="test">test css</div>
             <div>
                 <p>国际化</p>
                 {/*<FormattedMessage defaultMessage="foo" id="bar" />*/}

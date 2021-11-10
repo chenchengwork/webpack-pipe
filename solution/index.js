@@ -34,7 +34,7 @@ const getConfig = (webpackConfParams, formatWebpackConf, port) => {
 }
 
 exports.antSolution = {
-    dev: ({port, host, isInlineHotLoad = true, isWebpackHRM = true, devServerConfig, webpackConfParams = {}, formatWebpackConf}) => {
+    dev: ({port, host, isInlineHotLoad = true, isWebpackHRM = false, devServerConfig, webpackConfParams = {}, formatWebpackConf}) => {
         if(!port) return clc.red("请传入端口号(port)...");
         webpackConfParams.isProdMode = false;
         webpackConfParams.isWebpackHRM = isWebpackHRM;
