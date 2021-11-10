@@ -4,4 +4,4 @@
 #rm -rf ./playground/test-js/node_modules
 #rm -rf ./playground/test-ts/node_modules
 
-npm publish --registry http://registry.npmjs.org
+npm publish --registry https://registry.npmjs.org

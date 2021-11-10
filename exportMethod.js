@@ -25,6 +25,7 @@ const svgSpriteLoaderFn = require("./pipe/svgSpriteLoader");
 const miniCssExtractPlugin = require("./pipe/miniCssExtractPlugin");
 const provideReactPlugin = require("./pipe/provideReactPlugin");
 const webpackbarPlugin = require("./pipe/webpackbarPlugin");
+const tsChecker = require("./pipe/tsChecker");
 
 module.exports = {
     assemble: (nodes) => {
@@ -52,6 +53,7 @@ module.exports = {
         babelTsReact,
         babelAntdMobile,
 
+        tsChecker,
         miniCssExtractPlugin,
         provideReactPlugin,
         webpackbarPlugin

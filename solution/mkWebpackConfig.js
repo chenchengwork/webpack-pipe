@@ -134,6 +134,7 @@ module.exports = ({
     antd,
     isTargetEs5 = true,
     isWebpackHRM = true,
+    isStartTsChecker = true,
 }) => {
     // 设置全局变量
     depend.setWebpackPipeGlobal({isWebpackHRM});
@@ -145,6 +146,7 @@ module.exports = ({
     }else if(antd == "mobile"){
         antdPipe =  pipe.babelAntdMobile;
     }
+
     let config = assemble([
         ...pipeNodes,
         isProdMode ? pipe.production : pipe.development,
@@ -156,6 +158,7 @@ module.exports = ({
         antdPipe,
         pipe.babelTsReact,
 
+        isStartTsChecker ? pipe.tsChecker : (config) => config,
         pipe.miniCssExtractPlugin,
         pipe.webpackbarPlugin,
         resolve,
