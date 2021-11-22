@@ -17,7 +17,16 @@ module.exports = (config) => {
             // 编译的目录
             path: "/tmp/webpackCompilerResult",
             filename: '[name].js',
-            chunkFilename: '[name].[chunkhash:8].bundle.js',
+            // chunkFilename: '[name].[chunkhash:8].bundle.js',
+            chunkFilename: '[name].[contenthash].bundle.js',
+        },
+
+        cache: {
+            type: 'filesystem', // 使用文件缓存
+            name: `${process.env.NODE_ENV || 'development'}-cache` ,
+            buildDependencies: {
+                config: [ __filename ]
+            },
         },
 
         module: {

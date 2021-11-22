@@ -135,6 +135,7 @@ module.exports = ({
     isTargetEs5 = true,
     isWebpackHRM = true,
     isStartTsChecker = true,
+    isStartCache = true,
 }) => {
     // 设置全局变量
     depend.setWebpackPipeGlobal({isWebpackHRM});
@@ -211,6 +212,11 @@ module.exports = ({
     // 热更新(HRM)
     if(isWebpackHRM){
         config.plugins.push(new webpack.HotModuleReplacementPlugin());
+    }
+
+    // 不开启开启cache
+    if(!isStartCache){
+        delete config.cache;
     }
 
     return config;
