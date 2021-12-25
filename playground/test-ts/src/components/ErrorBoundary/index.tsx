@@ -1,11 +1,12 @@
 import styles from './index.scss';
-import { PureComponent } from 'react';
+import {ErrorInfo, PureComponent} from 'react';
 
 /**
  * 应用错误便捷
  */
-export default class ErrorBoundary extends PureComponent {
-    constructor(props) {
+export default class ErrorBoundary extends PureComponent<any> {
+    state:{hasError: boolean, error: Error, info: ErrorInfo}
+    constructor(props: any) {
         super(props);
         this.state = {
             hasError: false,
@@ -14,7 +15,7 @@ export default class ErrorBoundary extends PureComponent {
         };
     }
 
-    componentDidCatch(error, info) {
+    componentDidCatch(error: Error, info: ErrorInfo) {
         this.setState({ hasError: true, error, info });
     }
 

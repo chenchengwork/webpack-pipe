@@ -54,6 +54,7 @@ const config: Config = {
 export default ({ className = "", linkElement = 'a', type, title, desc, img, ...rest }: ExceptionProps) => {
     const pageType = type in config ? type : '404';
 
+
     return (
         <div className={styles.exception + " " + className} {...rest}>
             <div className={styles.imgBlock}>
@@ -69,6 +70,7 @@ export default ({ className = "", linkElement = 'a', type, title, desc, img, ...
                     {
                         createElement(linkElement, {
                             to: "/",
+                            // @ts-ignore
                             href: "/",
                         }, <Button type="primary">返回首页</Button>)
                     }

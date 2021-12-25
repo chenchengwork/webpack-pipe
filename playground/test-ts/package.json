@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js /data/web_bundle/webpack-pipe-playground /",
+    "remove-webpack-cache": "rm -rf ./node_modules/.cache/webpack",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
