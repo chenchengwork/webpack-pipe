@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'production';
+process.env.BABEL_ENV = 'production';
 const { solution } = require("../../../index");
 const { formatWebpackConf, webpackConfParams } = require("./mkWebpackConfig");
 
