@@ -2,7 +2,7 @@
  * @description 项目入口文件
  */
 import React from 'react';
-import ReactDOM  from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import Main from './Main';
 
 /**
@@ -10,7 +10,9 @@ import Main from './Main';
  */
 const render = (props: any) => {
     const { container } = props;
-    ReactDOM.render(<Main />, getRenderContainer(container));
+
+    const root = ReactDOMClient.createRoot(getRenderContainer(container));
+    root.render(<Main />);
 }
 
 // 监听webpack热替换(HRM)
@@ -71,7 +73,7 @@ export async function mount(props: any) {
 export async function unmount(props: any) {
     console.log('[test-ts] unmount', props);
     const { container } = props;
-    ReactDOM.unmountComponentAtNode(getRenderContainer(container));
+    // ReactDOM.unmountComponentAtNode(getRenderContainer(container));
 }
 
 /**
