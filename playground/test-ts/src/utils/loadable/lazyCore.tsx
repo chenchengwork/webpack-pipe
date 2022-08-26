@@ -6,7 +6,7 @@ import React from "react";
 const DefaultSpin = () => <div>loading...</div>
 import Exception from './Exception';
 
-class ErrorBoundary extends React.PureComponent {
+class ErrorBoundary extends React.PureComponent<any> {
     state = { hasError: false }
 
     static getDerivedStateFromError(error: Error | null) {

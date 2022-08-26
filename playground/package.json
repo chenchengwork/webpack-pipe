@@ -5,15 +5,15 @@
   "main": "src/index",
   "scripts": {},
   "dependencies": {
-    "antd": "^4.19.3",
-    "react-intl": "^5.24.8",
-    "react-router-dom": "^6.2.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "antd": "4.22.7",
+    "react-intl": "5.25.1",
+    "react-router-dom": "6.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/styled-jsx": "^2.2.8",
-    "@types/react": "17.0.43",
-    "@types/react-dom": "17.0.14"
+    "@types/styled-jsx": "2.2.8",
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6"
   }
 }

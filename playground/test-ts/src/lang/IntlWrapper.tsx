@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, PropsWithChildren} from 'react';
 import {ConfigProvider} from "antd";
 import {IntlProvider, useIntl} from 'react-intl';
 import {EnumLangType} from '@/lang/EnumLangType';
@@ -19,13 +19,13 @@ const lang = {
     },
 };
 
-const InitIntl: React.FC = ({children}) => {
+const InitIntl: React.FC<PropsWithChildren<any>> = ({children}) => {
     langUtil.setIntl(useIntl());
 
     return <Fragment>{children}</Fragment>
 };
 
-const IntlWrapper: React.FC = ({children}) => {
+const IntlWrapper: React.FC<PropsWithChildren<any>> = ({children}) => {
     const {antdLocale, intlLocale, intlMessages} = lang[currentLang];
 
     return (
