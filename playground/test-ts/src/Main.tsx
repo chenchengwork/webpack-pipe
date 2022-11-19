@@ -6,54 +6,34 @@ import ErrorBoundary from './components/ErrorBoundary';
 import loadable from '@/utils/loadable';
 import { IntlWrapper } from '@/lang';
 
+import { StyleRegistry} from "styled-jsx";
+import css from "styled-jsx/css";
+
 const Hello = loadable(import("./pages/Hello"));
 
 /**
  * 渲染程序
  */
 export default () => (
-    <IntlWrapper>
-        <ErrorBoundary>
-            <Hello />
-        </ErrorBoundary>
-    </IntlWrapper>
+    <StyleRegistry>
+        <IntlWrapper>
+            <ErrorBoundary>
+                <Hello />
+            </ErrorBoundary>
+        </IntlWrapper>
+        <style jsx global>{getGlobalStyle}</style>
+    </StyleRegistry>
 );
 
 
-// export default () => {
-//     return <div>
-//         <p>only this paragraph will get the style :)</p>
-//
-//         { /* you can include <Component />s here that include
-//          other <p>s that don't get unexpected styles! */ }
-//
-//         <style jsx>{`
-//       p {
-//         color: red;
-//       }
-//     `}</style>
-//     </div>
-// }
+// 全局样式
+// language=SCSS
+const getGlobalStyle = css.global`
+    body {
+      height: 100%;
+    }
+`;
 
-
-// import css from "styled-jsx/css"
-//
-// function getLinkStyles(color) {
-//     return css.resolve`
-//     a { color: ${color} }
-//   `;
-// }
-//
-// export default (props) => {
-//     const { className, styles } = getLinkStyles("red")
-//
-//     return (
-//         <div>
-//             <a className={className}>About</a>
-//             {styles}
-//         </div>
-//     )
-// }
 
 
 

@@ -1,23 +1,15 @@
 import React, {useState} from 'react';
-// import {FC, useState} from 'react';
 import { Table, Drawer, Switch, Spin, Button, Card, Row } from 'antd';
-import {
-    // PlusOutlined,
-    // EditOutlined,
-    // DeleteOutlined,
-    CopyOutlined
-} from '@ant-design/icons';
-// import {FormattedMessage} from 'react-intl';
+import { CopyOutlined } from '@ant-design/icons';
 import { testVendor } from "vendor/test";
 import LoadJsx from "./LoadJsx";
 import LoadStaticResource from "./LoadStaticResource";
 import Test from './Test';
 import css from "styled-jsx/css"
-import {RespDataType} from './api'
 import "./css/test.css";
 
 const Hello: React.FC = () => {
-    const a:RespDataType.RoleList = [];
+    const { className, styles } = getResolveStyle();
     const [ loading, setLoading ] = useState(true);
     const color = "red";
 
@@ -59,33 +51,38 @@ const Hello: React.FC = () => {
             <Test />
 
             <div className="test">
-                测试styled-jsx
+                <span>测试styled-jsx</span>
+                <div className="font-color">我是嵌套样式的文字颜色</div>
                 {/*language=SCSS*/}
                 <style jsx>{`
-                  .test{
+                  .test {
                     width: 100%;
                     background-color: ${color};
                     display: flex;
+
+                    & > .font-color {
+                      color: #73e089;
+                    }
                   }
                 `}</style>
             </div>
+
+            <div className={`test_resolve ${className}`}>css.resolve``样式11111</div>
+            {styles}
         </div>
     )
 }
 
 export default Hello;
 
-
-// 全局样式
-const getGlobalStyle = () => {
-    // language=SCSS
-    return css.global`
-        body {
-          height: 100%;
-        }
-    `
-}
-
+// resolve样式
+// language=SCSS
+const getResolveStyle = () => css.resolve`
+  .test_resolve {
+    color: #b388de;
+    font-size: 30px;
+  }
+`;
 
 const dataSource = [
     {
@@ -98,7 +95,8 @@ const dataSource = [
         name: '胡彦祖',
         age: 42,
         address: '西湖区湖底公园1号'
-    }];
+    }
+];
 
 const columns = [{
     title: '姓名',

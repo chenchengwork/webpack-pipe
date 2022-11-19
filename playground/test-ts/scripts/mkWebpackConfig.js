@@ -1,19 +1,19 @@
-const { assemble, depend } = require("../../../index");
+const { assemble, depend, pipe } = require("../../../index");
 const { ModuleFederationPlugin } = require("webpack").container;
 
 /**
  * 组装webpack config
- * @return {*}
  */
 module.exports = {
     webpackConfParams:{
-        isIntl: true,
-        antTheme: require("./ant_theme")
+        // isIntl: true,
+        // antTheme: require("./ant_theme")
     },
     formatWebpackConf: (config, isProdMode) => {
         const realConfig = assemble([
             setVendor,
             // setModuleFederationPlugin,
+            pipe.styledJsx,
             () => config
         ]);
         return realConfig;
