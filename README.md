@@ -3,6 +3,31 @@
 webpack开发和打包管道
 
 ## Change Log
+v3.0.0
+```
+1. 去掉国际化相关的依赖包
+npm uninstall babel-plugin-react-intl-auto babel-plugin-react-intl-extractor  --legacy-peer-deps
+
+移除optimize-css-assets-webpack-plugin，用css-minimizer-webpack-plugin代替, 解决optimize-css-assets-webpack-plugin不依赖宇webpack5的问题
+
+2. 去掉core-js
+npm uninstall core-js
+
+3. 移除less
+npm uninstall less less-loader
+
+4. 移除svg-sprite-loader
+npm uninstall svg-sprite-loader
+rm -rf pipe/svgSpriteLoader.js
+
+5. 移除babel-plugin-import, v5版本的antd不再需要该组件
+npm uninstall babel-plugin-import
+rm -rf pipe/babelAntd.js pipe/babelAntdMobile.js
+
+6. 移除qiankun
+rm -rf pipe/extra
+
+```
 v1.0.20
 ```
 1. 升级开发依赖包

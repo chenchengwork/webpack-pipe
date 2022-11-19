@@ -17,13 +17,14 @@ const defaultWebpackConfParams = {
 
 const getConfig = (webpackConfParams, formatWebpackConf, port) => {
     webpackConfParams = Object.assign(defaultWebpackConfParams, webpackConfParams);
-    const { qiankun, isProdMode } = webpackConfParams;
+    const { isProdMode } = webpackConfParams;
+    // const { qiankun, isProdMode } = webpackConfParams;
 
-    if(isProdMode){
-        qiankun.publicPath = qiankun.publicPath || "/";
-    }else {
-        qiankun.publicPath = qiankun.publicPath || `//${depend.tool.getLocalIP()}:${port}/public/`;
-    }
+    // if(isProdMode){
+    //     qiankun.publicPath = qiankun.publicPath || "/";
+    // }else {
+    //     qiankun.publicPath = qiankun.publicPath || `//${depend.tool.getLocalIP()}:${port}/public/`;
+    // }
 
     let webpackConfig = mkWebpackConfig(webpackConfParams)
     if(formatWebpackConf){

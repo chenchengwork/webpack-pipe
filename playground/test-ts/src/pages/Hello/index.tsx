@@ -7,7 +7,7 @@ import {
     // DeleteOutlined,
     CopyOutlined
 } from '@ant-design/icons';
-import {FormattedMessage} from 'react-intl';
+// import {FormattedMessage} from 'react-intl';
 import { testVendor } from "vendor/test";
 import LoadJsx from "./LoadJsx";
 import LoadStaticResource from "./LoadStaticResource";
@@ -15,7 +15,6 @@ import Test from './Test';
 import css from "styled-jsx/css"
 import {RespDataType} from './api'
 import "./css/test.css";
-
 
 const Hello: React.FC = () => {
     const a:RespDataType.RoleList = [];
@@ -34,15 +33,15 @@ const Hello: React.FC = () => {
             <Drawer />
             <Switch defaultChecked />
             <div className="test">test css</div>
-            <div>
-                <p>国际化</p>
-                {/*<FormattedMessage defaultMessage="foo" id="bar" />*/}
-                <FormattedMessage
-                    defaultMessage="Today is {ts, date, ::yyyyMMdd}"
-                    values={{ts: Date.now()}}
-                />
-                <FormattedMessage defaultMessage="中国" />
-            </div>
+            {/*<div>*/}
+            {/*    <p>国际化</p>*/}
+            {/*    /!*<FormattedMessage defaultMessage="foo" id="bar" />*!/*/}
+            {/*    <FormattedMessage*/}
+            {/*        defaultMessage="Today is {ts, date, ::yyyyMMdd}"*/}
+            {/*        values={{ts: Date.now()}}*/}
+            {/*    />*/}
+            {/*    <FormattedMessage defaultMessage="中国" />*/}
+            {/*</div>*/}
             <div>
                <p>加载的js或jsx文件</p>
                 <LoadJsx />

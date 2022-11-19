@@ -8,12 +8,11 @@ solution.antSolution.dev({
 	formatWebpackConf,
 	devServerConfig: {
 		hotOnly: false,
-		// clientLogLevel: "error",
 		http2: true,
 		compress: false,
 		https: {
-			key: fs.readFileSync(path.resolve(__dirname, './ssl/key.pem')),
-			cert: fs.readFileSync(path.resolve(__dirname,'./ssl/cert.pem')),
+			key: fs.readFileSync(path.resolve(__dirname, './ssl/dev_http_server.key')),
+			cert: fs.readFileSync(path.resolve(__dirname,'./ssl/dev_http_server.crt')),
 		}
 	}
 });

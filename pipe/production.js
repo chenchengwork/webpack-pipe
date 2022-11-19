@@ -1,4 +1,4 @@
-const { merge, TerserWebpackPlugin, OptimizeCSSAssetsPlugin } = require("../lib/depend");
+const { merge, TerserWebpackPlugin, CssMinimizerPlugin,} = require("../lib/depend");
 module.exports = (config) => {
     return merge({
         devtool: false,	// cheap-module-source-map,cheap-source-map
@@ -34,7 +34,7 @@ module.exports = (config) => {
                 }),
 
                 // 优化css
-                new OptimizeCSSAssetsPlugin({})  // 优化css
+                new CssMinimizerPlugin({})  // 优化css
             ]
         }
     }, config || {});

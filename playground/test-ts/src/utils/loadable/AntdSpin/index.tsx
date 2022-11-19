@@ -3,8 +3,7 @@
  */
 import React from 'react';
 import styles from './index.scss';
-import { Spin } from 'antd';
-import { SpinProps } from 'antd/lib/spin';
+import { Spin, SpinProps } from 'antd';
 
 interface BoxSpinProps {
     style: React.CSSProperties;

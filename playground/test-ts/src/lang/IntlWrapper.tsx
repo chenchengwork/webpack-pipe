@@ -8,12 +8,12 @@ const currentLang = "zh";
 
 const lang = {
     "zh": {
-        antdLocale: require('antd/lib/locale-provider/zh_CN').default,
+        antdLocale: require('antd/locale/zh_CN').default,
         intlLocale: EnumLangType.zh,
         intlMessages: require('../../locales/zh.json'),
     },
     "en": {
-        antdLocale: require('antd/lib/locale-provider/en_US').default,
+        antdLocale: require('antd/locale/en_US').default,
         intlLocale: EnumLangType.en,
         intlMessages: require('../../locales/en.json'),
     },
