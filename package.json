@@ -1,6 +1,6 @@
 {
   "name": "webpack-pipe",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "author": "chencheng <daniel_txy@163.com>",
   "description": "webpack pipe",
   "main": "index",
@@ -38,7 +38,7 @@
     "less-loader": "11.1.0",
     "mini-css-extract-plugin": "2.6.1",
     "node-sass": "8.0.0",
-    "optimize-css-assets-webpack-plugin": "6.0.1",
+    "css-minimizer-webpack-plugin": "4.2.2",
     "postcss": "8.4.19",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-loader": "6.2.1",
