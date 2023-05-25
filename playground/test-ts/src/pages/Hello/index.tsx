@@ -52,7 +52,7 @@ const Hello: React.FC = () => {
 
             <div className="test">
                 <span>测试styled-jsx</span>
-                <div className="font-color">我是嵌套样式的文字颜色</div>
+                <div className="font-color">我是styled-jsx scss的嵌套样式的文字颜色</div>
                 {/*language=SCSS*/}
                 <style jsx>{`
                   .test {

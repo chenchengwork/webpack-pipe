@@ -2,6 +2,7 @@
  * @description 项目入口文件
  */
 import React from "react";
+import { App } from "antd";
 import ErrorBoundary from './components/ErrorBoundary';
 import loadable from '@/utils/loadable';
 import { IntlWrapper } from '@/lang';
@@ -16,11 +17,13 @@ const Hello = loadable(import("./pages/Hello"));
  */
 export default () => (
     <StyleRegistry>
-        <IntlWrapper>
-            <ErrorBoundary>
-                <Hello />
-            </ErrorBoundary>
-        </IntlWrapper>
+        <App>
+            <IntlWrapper>
+                <ErrorBoundary>
+                    <Hello />
+                </ErrorBoundary>
+            </IntlWrapper>
+        </App>
         <style jsx global>{getGlobalStyle}</style>
     </StyleRegistry>
 );

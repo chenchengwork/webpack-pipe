@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormattedMessage, IntlShape, MessageDescriptor } from 'react-intl';
 import { commonLangMsg } from './commonMsg';
-import dateUtil from './dateUtil';
 
 export default class LangUtil {
     // react-intl对象
@@ -41,9 +40,6 @@ export default class LangUtil {
         return this.intl.formatMessage(commonLangMsg[key], params)
     };
 
-    // 格式化时间戳
-    // @ts-ignore
-    dateFormat = (timestamp: number, format = "ymd_hms") => dateUtil[currentLang][format](timestamp);
 
 }
 
